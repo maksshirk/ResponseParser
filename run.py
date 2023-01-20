@@ -15,9 +15,19 @@ for с in range(1, num_of_page + 1):  # Сколько страниц столь
         summa = str(a.find('script')).replace('<script type="text/javascript">document.write(', '') 
         summa = summa.replace("'", "")
         summa = summa.replace(");</script>", "")
+        summa = BeautifulSoup(summa, 'lxml')
         #summa = summa.find('div')
-        print(summa)
+        #print(summa.prettify())
+        try:
+            print(summa.find('div').text)
+        except AttributeError:
+            pass
+        try:
+            print(summa.find('a').text)
+        except AttributeError:
+            pass
         i = i + 1 
+        print("\n")
     
     
     
